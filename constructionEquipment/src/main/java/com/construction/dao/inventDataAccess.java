@@ -63,7 +63,7 @@ Connection con;
     
     
 //    edit product information
-    public boolean editProductInfo(Product product){
+    public boolean editProductInfo(Product product) {
         boolean status = false;
         try{
             String query = "update product set pname=?, quantity=?, priceperhr=?  where product_id=?";
