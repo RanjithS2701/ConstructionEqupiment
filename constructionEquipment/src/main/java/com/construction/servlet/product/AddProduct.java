@@ -2,6 +2,7 @@ package com.construction.servlet.product;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import com.construction.dao.connection;
 import com.construction.dao.inventDataAccess;
@@ -18,7 +20,7 @@ import com.construction.pojo.Product;
  * Servlet implementation class AddProduct
  */
 @WebServlet("/AddProduct")
-@MultipartConfig(maxFileSize = 59999999)   // upload file's size up to 5MB
+@MultipartConfig   // upload file's size up to 5MB
 public class AddProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -45,9 +47,11 @@ public class AddProduct extends HttpServlet {
 		// TODO Auto-generated method stub
 		  String pname = request.getParameter("pname");
           String quantity = request.getParameter("quantity");
-          String priceperhr = request.getParameter("priceperhr");  
+          String priceperhr = request.getParameter("priceperhr");
+          Part part = request.getPart("pimage");
+          InputStream inputStream = part.getInputStream();
                     
-          Product pro = new Product(pname, quantity, priceperhr);
+          Product pro = new Product(pname, quantity, priceperhr, inputStream);
           try{
         	  inventDataAccess prodao = new inventDataAccess(connection.getConnection());
               if(prodao.addProduct(pro)){

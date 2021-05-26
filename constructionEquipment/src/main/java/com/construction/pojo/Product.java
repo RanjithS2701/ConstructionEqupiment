@@ -1,15 +1,28 @@
 package com.construction.pojo;
 
+import java.io.InputStream;
+
 public class Product {
 	private int product_id;
 	private String pname;
 	private String quantity;
 	private String priceperhr;
+	private InputStream pimage;
 	
 	
 	public Product() {
 		super();
 	}
+    
+	
+	public Product(String pname, String quantity, String priceperhr, InputStream pimage) {
+		super();
+		this.pname = pname;
+		this.quantity = quantity;
+		this.priceperhr = priceperhr;
+		this.pimage = pimage;
+	}
+
 
 	public Product(int product_id, String pname, String quantity, String priceperhr) {
 		super();
@@ -56,6 +69,16 @@ public class Product {
 
 	public void setPriceperhr(String priceperhr) {
 		this.priceperhr = priceperhr;
+	}
+
+
+	public InputStream getPimage() {
+		return pimage;
+	}
+
+
+	public void setPimage(InputStream pimage) {
+		this.pimage = pimage;
 	}
 	
 	

@@ -20,11 +20,12 @@ Connection con;
         boolean test = false;
         PreparedStatement pst;
         try{
-            String query =  "insert into product (pname,quantity,priceperhr) values(?,?,?)";
+            String query =  "insert into product (pname,quantity,priceperhr,pimage) values(?,?,?,?)";
             pst = con.prepareStatement(query);
             pst.setString(1, product.getPname());
             pst.setString(2, product.getQuantity());
             pst.setString(3, product.getPriceperhr());
+            pst.setBlob(4, product.getPimage());
             pst.executeUpdate();
             test= true;
 

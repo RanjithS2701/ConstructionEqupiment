@@ -58,7 +58,7 @@ public class Login extends HttpServlet {
 		Dataaccess ldao = new Dataaccess(connection.getConnection());
 
 		if (ldao.validate(login)) {
-			RequestDispatcher rd=request.getRequestDispatcher("UserPage.jsp");  
+			RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp");  
 	        rd.forward(request,response);
 			//response.sendRedirect("welcome.jsp");
 		} else {

@@ -49,7 +49,7 @@ request.setAttribute("PRODUCTS_LIST", product);
 			<div class="row">
 				<div class="col-md-3">
 					<h3>ADD PRODUCT </h3>
-					<form action="AddProduct" method="post">
+					<form action="AddProduct" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label>Product Name</label> <input class="form-control"
 								name="pname" place-holder="Product Name" required>
@@ -61,6 +61,10 @@ request.setAttribute("PRODUCTS_LIST", product);
 						<div class="form-group">
 							<label>Price Per Hour</label> <input class="form-control"
 								name="priceperhr" place-holder="Price per hr " required>
+						</div>
+						<div class="form-group">
+							<label>Product Image</label> <input class="form-control" type="file"
+								name="pimage" place-holder="Product Image " required>
 						</div>
 						
 							<button type="submit" class="btn btn-primary">Submit</button>
