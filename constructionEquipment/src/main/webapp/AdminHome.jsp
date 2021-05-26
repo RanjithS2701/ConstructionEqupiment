@@ -43,7 +43,7 @@
         <div class="cards-list">
   
             <div class="card 1">
-              <div class="card_image"> <img src="userManagement.gif"/> </div>
+              <div class="card_image"> <img src="img/userManagement.gif"/> </div>
               <div class="card_title title-white">
                 <section class="color-1">
                   <nav class="cl-effect-20">
@@ -52,7 +52,7 @@
             </div>
             <div class="card 3">
               <div class="card_image">
-                <img src="InventoryGif.gif" />
+                <img src="img/InventoryGif.gif" />
               </div>
               <div class="card_title title-white">
                 <section class="color-1">
@@ -64,7 +64,7 @@
             
               <div class="card 2">
               <div class="card_image">
-                <img src="OrderManagement.gif" width="250" height="250"/>
+                <img src="img/OrderManagement.gif" width="250" height="250"/>
                 </div>
               <div class="card_title title-white">
                 <section class="color-1">
@@ -77,7 +77,7 @@
               
               <div class="card 4">
               <div class="card_image">
-                <img src="UserViewGif.gif" />
+                <img src="img/UserViewGif.gif" />
                 </div>
               <div class="card_title title-white">
                 <section class="color-1">

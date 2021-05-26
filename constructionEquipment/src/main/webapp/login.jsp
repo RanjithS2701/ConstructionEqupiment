@@ -49,7 +49,7 @@
        
         </table> <br> 
         <div style="color: #FF0000;">${errorMessage}</div><br>
-        <a href="Admin.jsp">login as admin</a> <br> <br>
+        <a href="Admin.jsp" style="color: #000000;">login as admin</a> <br> <br>
        
         <input type="submit" value="Submit">
     </form>

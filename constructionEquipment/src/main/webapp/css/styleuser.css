@@ -18,23 +18,18 @@
   
   
 }
-
+/* <********NAV BAR*******> */
 .logo{
-    width: 93.4%;
-    height: 75px;
-    background-color: #ff6347;
-    line-height: 75px;
-    padding: 0px 50px;
-    position: sticky;
-    z-index: 1;
-    color: #fff;
+  width: 93.4%;
+  height: 75px;
+  background-color: tomato;
+  line-height: 75px;
+  padding: 0px 40px;
+  position: sticky;
+  z-index: 1;
 }
 
-
-nav ul{
-    float: right;
-}
- nav ul li{
+nav ul li{
   display: inline-block;
   list-style: none;
 }
@@ -49,13 +44,12 @@ nav ul li a{
 body {
     font-family: "Lato", sans-serif;
     margin: 0px;
-    
-    
+
   }
   
   .sidenav {
     height: 100%;
-    width: 0;
+    width: 0%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -63,7 +57,7 @@ body {
     background-color: rgb(9, 28, 29);
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 70px;
     opacity: 0.5;
   }
   
@@ -90,12 +84,25 @@ body {
     margin-left: 50px;
   }
   
- 
+  #main {
+     
+      
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70px;
+    width: 100%;
+    transition: margin-left .5s;
+    padding: 0px 0px 0px 0px;
+    font-weight: bold;
+    color: azure;
+   
+  }
   
   @media screen {
-    .sidenav {padding-top: 50px;}
-    .sidenav a {font-size: 18px;}
-  }
+    /* .sidenav {padding-top: 50px;} */
+    .sidenav a {font-size: 18px;}}
+  
  /* <------------------------------------USER HOME------------------------------------------> */
 
   
@@ -208,28 +215,31 @@ body {
   width: 100%;
   }
   }
-/* ****carousoul*********/
+/* ****carousel*********/
 
-.container-fluid {
- padding: 5px 20px 5px 20px;
 
-}
 
 #testimonials {
 
-  background-color: #ffc288;
- 
+  /* background-color: #528854; */
+  background-image: url(../img/carouselbg1.jfif);
+  width: 100%;
+  background-size: cover;
 }
 .testimonial-image {
-  width: 10%;
+  width: 15%;
+  
   border-radius: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 
 
 }
 .Testimonial-text {
  
   font-size: 2rem;
-  line-height: 1.3;
+  line-height: 1.5;
   width: 60%;
   text-align: center;
   margin-left: auto;
@@ -242,6 +252,14 @@ body {
 
 }
 .container-fluid {
-  padding: 2% 15% 3% 2%;
-
+  
+  height: 325px;
+  padding: 2% 10% 2% 10%;
+}
+.previousButton{
+  width: 50px;
+  margin-left: 120px;
+}
+.nextButton{
+  margin-right:120px;
 }

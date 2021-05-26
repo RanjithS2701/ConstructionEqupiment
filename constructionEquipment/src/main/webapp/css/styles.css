@@ -13,9 +13,10 @@ html{
 body{
 
     margin: 0 0 0 0;
+    color: #ffffff;
 }
 .background  {
-    background-image: url(../img/blur1.png);
+    background-image: url(../img/2803.jpg);
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,20 +26,20 @@ body{
   }
   
  
-  .blur  {
+ /*  .blur  {
     
     background: rgba(255, 255, 255, 0.2); 
     backdrop-filter: blur(8px); 
     border-right: 1px solid whitesmoke;
     height: 100vh;
-  }
+  } */
   .btn  {
     margin-top: 65px;
     backface-visibility: hidden;
-    background: rgba(51, 28, 58, 0.603); 
+    background: rgba(0, 255, 242, 0.4);
     border: none;
-    border-radius: 12px ;
-    color: #9fdf0a;
+    border-radius: 30px ;
+    color: #000000;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
@@ -52,6 +53,10 @@ body{
     -moz-osx-font-smoothing: grayscale;
     
     
+  }
+  
+  .btn:hover {
+  color: #000000;
   }
   /* code that is replaced */
 /* .bg-image {

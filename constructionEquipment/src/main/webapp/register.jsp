@@ -80,7 +80,7 @@
     </table><br>
     <table>
       <tr>
-        <div id="captcha"></div>
+        <div id="captcha" style="background-color: aliceblue; width:40%;height:40px; margin:0 auto 8px auto"></div>
         <input type="text" placeholder="Captcha" id="cpatchaTextBox" required />
          <button type="submit" onclick="validateCaptcha()">Verify</button> 
       </tr>

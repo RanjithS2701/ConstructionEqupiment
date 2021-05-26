@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@ page import="com.construction.dao.inventDataAccess" %>
+<%@ page import="com.construction.dao.connection" %>
+<%@ page import="com.construction.pojo.Product" %>
+<%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +11,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User Home</title>
-    <link rel="stylesheet" href="css/styleuser.css" text="text/css"/>
+
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -20,13 +23,9 @@
      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" 
     integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+   <!-- CSS FILE -->
+   <link rel="stylesheet" href="css/styleuser.css">
 
-
-      <!--Google Fonts-->
-  <link
-  href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,800&family=Ubuntu:wght@700&display=swap"
-  rel="stylesheet" />
-  
 </head>
 
 <body>
@@ -34,10 +33,10 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">PROFILE</a>
+        <a href="#">#####</a>
+        <a href="#">HELP</a>
         <a href="login.jsp">LOGOUT</a>
-        <a href="#">#####</a>
-        <a href="#">#####</a>
-        <a href="#">#####</a>
     </div>
 
     <nav id="main">
@@ -46,6 +45,7 @@
              
         </div>
     </nav>
+
     <section class="Colured-section" id="testimonials">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
@@ -55,81 +55,59 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active container-fluid">
-          <h2 class="Testimonial-text">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...".</h2>
-          <img class="testimonial-image" src="images/HAMMER.jfif" alt="dog-profile">
+          <h2 class="Testimonial-text">Team work divides the Task and multiplies the Success</h2>
+          <img class="testimonial-image" src="images/carousel1.jfif" alt="dog-profile">
          
 
         </div>
         <div class="carousel-item container-fluid">
-          <h2 class="Testimonial-text">Here are the best hammers which will make your works easier</h2>
-          <img class="testimonial-image" src="images/HAMMER.jfif" alt="lady-profile">
+          <h2 class="Testimonial-text">If we shape our Buildings;Thereafter they shape us</h2>
+          <img class="testimonial-image" src="images/carousel2.jfif" alt="lady-profile">
         
 
         </div>
         <div class="carousel-item container-fluid">
-          <h2 class="Testimonial-text">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...".</h2>
-          <img class="testimonial-image" src="HAMMER.jfif" alt="lady-profile">
-         
-
+          <h2 class="Testimonial-text">Construction is a matter of optimism; It's a matter of facing the future with confidence.</h2>
+          <img class="testimonial-image" src="images/carousel3.jfif" alt="lady-profile">
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <button class="carousel-control-prev previousButton" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <button class="carousel-control-next nextButton" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
     </section>
+    <!---------------------- cards ---------------------------->
     <div class="gallery">
+    
+    <%
+    inventDataAccess pdao;
+    pdao = new inventDataAccess(connection.getConnection());
+    List<Product> list = pdao.getAllProducts(); 
+    for(Product pr: list)
+	{
+	%>
+    
       <div class="content">
-        <img src="shoes.png">
-        <h3>TOOL1</h3>
-        
-        <h6>$##.## per hour</h6>
-        
-        <button class="buy-2">RENT ME</button>
-      </div>
-      <div class="content">
-        <img src="earphone.png">
-        <h3>TOOL2</h3>
-        
-        <h6>$##.## per hour</h6>
+		<img src="GetImage?product_id=<%=pr.getProduct_id() %>" height=50 width=50>
+        <h3><%= pr.getPname() %></h3>
+        <h6>In Stock :<%= pr.getQuantity() %></h6>
+        <h6>Rs.<%= pr.getPriceperhr() %> per hour</h6>
         
         <button class="buy-2">RENT ME</button>
       </div>
-      <div class="content">
-        <img src="watch.png">
-        <h3>TOOL3</h3>
-        
-        <h6>$##.## per hour</h6>
-        
-        <button class="buy-2">RENT ME</button>
-      </div>
-       <div class="content">
-        <img src="watch.png">
-        <h3>TOOL4</h3>
-        
-        <h6>$##.## per hour</h6>
-        
-        <button class="buy-2">RENT ME</button>
-      </div>
-       <div class="content">
-        <img src="watch.png">
-        <h3>TOOL5</h3>
-        
-        <h6>$##.## per hour</h6>
-        
-        <button class="buy-2">RENT ME</button>
-      </div>
+      <% 
+		}
+	  %>
+     
       
       
      
     </div>
-    
-
 
 
 

@@ -38,7 +38,7 @@
     <div  id="img1">
       
       <div id="hammerImgDiv">
-         <a href="#card"><img src="nail.png" id="hammer-initial" class="hammer-done"  alt="nail" width="80" height="80"></a>
+         <a href="#card"><img src="img/nail.png" id="hammer-initial" class="hammer-done"  alt="nail" width="80" height="80"></a>
          
       </div>
         
@@ -131,7 +131,7 @@ document.getElementById("hammer-initial").addEventListener("click", function() {
 });
 
 function makeSound(){
-  var tom1 = new Audio("Knock.mp3");
+  var tom1 = new Audio("sound/Knock.mp3");
       tom1.play();
 }
 function backgroundChange(){
