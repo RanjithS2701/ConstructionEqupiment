@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ page import="com.construction.dao.inventDataAccess" %>
-<%@ page import="com.construction.dao.connection" %>
-<%@ page import="com.construction.pojo.Product" %>
-<%@ page import="java.util.*" %>
-
+<%@page import="java.util.List"%>
+<%@page import="com.construction.pojo.Product"%>
+<%@page import="com.construction.dao.connection"%>
+<%@page import="com.construction.pojo.User"%>
+<%@page import="com.construction.dao.inventDataAccess"%>
+<%@page import="com.construction.dao.UserDataAccess"%>
 <!DOCTYPE html>
 <html>
 
@@ -27,22 +26,29 @@
    <link rel="stylesheet" href="css/styleuser.css">
 
 </head>
-
+<%
+    User user=(User)session.getAttribute("active-user");
+	/* UserDataAccess udao;
+	udao = new UserDataAccess(connection.getConnection());
+	List<User> list = udao.getAllUsers();  */
+%>
 <body>
 
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">PROFILE</a>
+        <a href="EditProfile.jsp?uname=<%= user.getUname()%>"><%= user.getUname()%></a>
         <a href="#">#####</a>
         <a href="#">HELP</a>
         <a href="login.jsp">LOGOUT</a>
+       	<div class="message" style="color: pink;text-align:center;font-weight:bold;text-decoration:underline;">${Message}</div><br>
     </div>
 
     <nav id="main">
         <div class="logo" style="width: 100%; margin-left:auto; margin-right: auto;">
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MARSS</span>
              
+            <span style="padding-left:80%;x"><%= user.getUname()%></span>
         </div>
     </nav>
 
@@ -56,19 +62,19 @@
       <div class="carousel-inner">
         <div class="carousel-item active container-fluid">
           <h2 class="Testimonial-text">Team work divides the Task and multiplies the Success</h2>
-          <img class="testimonial-image" src="images/carousel1.jfif" alt="dog-profile">
+          <img class="testimonial-image" src="images/carousel1.jfif" alt="profile">
          
 
         </div>
         <div class="carousel-item container-fluid">
           <h2 class="Testimonial-text">If we shape our Buildings;Thereafter they shape us</h2>
-          <img class="testimonial-image" src="images/carousel2.jfif" alt="lady-profile">
+          <a href="#"><img class="testimonial-image" src="images/carousel2.jfif" alt="profile"></a>
         
 
         </div>
         <div class="carousel-item container-fluid">
           <h2 class="Testimonial-text">Construction is a matter of optimism; It's a matter of facing the future with confidence.</h2>
-          <img class="testimonial-image" src="images/carousel3.jfif" alt="lady-profile">
+          <img class="testimonial-image" src="images/carousel3.jfif" alt="profile">
         </div>
       </div>
       <button class="carousel-control-prev previousButton" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -81,10 +87,10 @@
       </button>
     </div>
     </section>
+    
     <!---------------------- cards ---------------------------->
     <div class="gallery">
-    
-    <%
+       <%
     inventDataAccess pdao;
     pdao = new inventDataAccess(connection.getConnection());
     List<Product> list = pdao.getAllProducts(); 
@@ -93,21 +99,21 @@
 	%>
     
       <div class="content">
-		<img src="GetImage?product_id=<%=pr.getProduct_id() %>" height=50 width=50>
-        <h3><%= pr.getPname() %></h3>
-        <h6>In Stock :<%= pr.getQuantity() %></h6>
-        <h6>Rs.<%= pr.getPriceperhr() %> per hour</h6>
+		<img src="GetImage?product_id=<%=pr.getProduct_id() %>" height=100 width=150>
+        <font size="5"><%= pr.getPname() %></font><br>
+        <font size="3">In Stock :<%= pr.getQuantity() %></font><br>
+        <font size="3">Rs.<%= pr.getPriceperhr() %> per hour</font>
         
         <button class="buy-2">RENT ME</button>
       </div>
       <% 
 		}
 	  %>
-     
-      
       
      
     </div>
+    
+
 
 
 

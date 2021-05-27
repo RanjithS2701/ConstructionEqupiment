@@ -47,6 +47,7 @@ public class User {
 
 	public User(String uname, String password) {
 		super();
+		
 		this.uname = uname;
 		this.password = password;
 	}
@@ -75,6 +76,28 @@ public class User {
 		this.lname = lname;
 		this.dob = dob;
 		this.gender = gender;
+		this.phoneno = phoneno;
+		this.email = email;
+	}
+	
+
+
+	public User(String fname, String lname, String dob, String gender, String phoneno, String email) {
+		super();
+		this.fname = fname;
+		this.lname = lname;
+		this.dob = dob;
+		this.gender = gender;
+		this.phoneno = phoneno;
+		this.email = email;
+	}
+
+    
+	public User(int u_id,String fname, String lname, String phoneno, String email) {
+		super();
+		this.u_id = u_id;
+		this.fname = fname;
+		this.lname = lname;
 		this.phoneno = phoneno;
 		this.email = email;
 	}

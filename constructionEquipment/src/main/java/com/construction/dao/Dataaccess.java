@@ -45,7 +45,7 @@ public class Dataaccess {
     public boolean validate(User login) {
     	
     	boolean status = false;
-    	String sql = "select * from user where uname = ? and password=?";
+    	String sql = "select * from user where  uname=? and password=?";
     	
     	PreparedStatement ps;
     	try {

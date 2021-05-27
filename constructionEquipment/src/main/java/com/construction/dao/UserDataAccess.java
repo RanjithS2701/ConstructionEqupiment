@@ -73,7 +73,7 @@ Connection con;
        return status; 
     }
     
-//    get single book information in edit page
+//    get single user information in edit page
     public User getSingleUser(int u_id){
         User user = null;
         
@@ -99,6 +99,51 @@ Connection con;
             e.printStackTrace();
         }
         return user;
+    }
+    public User getSingleUserDetail(String uname){
+        User user = null;
+        
+        try{
+            String query = "select * from user where uname=?";
+            
+            PreparedStatement pt = this.con.prepareStatement(query);
+            pt.setString(1, uname);
+            ResultSet rs= pt.executeQuery();
+            
+            while(rs.next()){
+                int u_id1 = rs.getInt("u_id");
+                String fname = rs.getString("fname");
+                String lname = rs.getString("lname");
+                String dob = rs.getString("dob");
+                String gender = rs.getString("gender");
+                String phoneno = rs.getString("phoneno");
+                String email = rs.getString("email");
+               
+                user = new User(u_id1,fname,lname,dob,gender,phoneno,email);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return user;
+    }
+	public boolean editUser(User user){
+        boolean status = false;
+        try{
+            String query = "update user set fname=?, lname=?, phoneno=?, email=?  where u_id=?";
+            PreparedStatement pt = this.con.prepareStatement(query);
+            pt.setString(1, user.getFname());
+            pt.setString(2, user.getLname());
+            pt.setString(3, user.getPhoneno());
+            pt.setString(4, user.getEmail());
+            pt.setInt(5, user.getU_id());
+            
+            pt.executeUpdate();
+            status = true;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+       return status; 
     }
 
 }
