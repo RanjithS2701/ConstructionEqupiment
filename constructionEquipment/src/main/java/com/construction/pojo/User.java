@@ -12,7 +12,7 @@ public class User {
 	private String phoneno;
 	private String email;
 	private String password;
-	
+	private String password1;
 	
 	
 	public User(int u_id, String fname, String lname, String uname, String dob, String gender, String phoneno,
@@ -101,6 +101,21 @@ public class User {
 		this.phoneno = phoneno;
 		this.email = email;
 	}
+    
+	
+
+	public User(String uname) {
+		super();
+		this.uname = uname;
+	}
+
+
+	public User(int u_id, String password) {
+		super();
+		this.u_id = u_id;
+		this.password = password;
+		
+	}
 
 
 	public int getU_id() {
@@ -157,15 +172,8 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
-	
-	
-	
-	
 
-    
-	
+
+		
 }
 

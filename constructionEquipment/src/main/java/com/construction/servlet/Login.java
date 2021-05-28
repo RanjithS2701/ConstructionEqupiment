@@ -51,6 +51,8 @@ public class Login extends HttpServlet {
 		String uname = request.getParameter("uname");
 		String password = request.getParameter("password");
 		
+		User username = new User(uname);
+		username.setUname(uname);
 				
 		User login = new User(uname, password);
 		login.setUname(uname);
@@ -60,6 +62,7 @@ public class Login extends HttpServlet {
 
 		if (ldao.validate(login)) {
 			session.setAttribute("active-user",login);
+			session.setAttribute("user-name", username);
 			RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp");  
 	        rd.forward(request,response);
 			//response.sendRedirect("welcome.jsp");

@@ -145,5 +145,21 @@ Connection con;
         
        return status; 
     }
+	public boolean changePassword(User user) {
+		boolean status = false;
+		try {
+			String query = "update user set password=? where uname=?";
+			PreparedStatement pst;
+			pst = this.con.prepareStatement(query);
+			pst.setString(1, user.getPassword());
+			pst.setString(2, user.getUname());
+			
+			pst.executeUpdate();
+			status = true;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
 
 }
