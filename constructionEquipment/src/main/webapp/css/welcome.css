@@ -1,22 +1,8 @@
-.btn  {
-  backface-visibility: hidden;
-  background: rgba(248, 232, 10, 0.856); 
-  border: none;
-  border-radius: 20px ;
-  color: #9fdf0a;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  left: 50%;
-  padding: 12px 16px;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  z-index: 10;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-  
+/* CHANGE PASSWORD */
+.header{
+  text-align: right;
+  background-color: tomato;
+  color: #fff;
 }
 /* <********NAV BAR*******> */
 .logo{
