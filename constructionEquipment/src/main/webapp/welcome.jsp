@@ -112,14 +112,18 @@
         <font size="3">In Stock :<%= pr.getQuantity() %></font><br>
         <font size="3">Rs.<%= pr.getPriceperhr() %> per hour</font>
         
-        <button class="buy-2">RENT ME</button>
+<button class="buy-2">
+        <a href="AddToCart.jsp?product_id=<%=pr.getProduct_id() %>" style="color: #ffffff;" >RENT ME</a></button>
       </div>
+      </div>
+     
+      
       <% 
 		}
 	  %>
       
      
-    </div>
+   
     
    <!-- change password modal -->
   
@@ -174,16 +178,26 @@
 
 
     <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-        }
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-        }
-    </script>
+   
+      function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("main").style.marginLeft = "250px";
+      }
+
+      function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          document.getElementById("main").style.marginLeft = "0";
+      }
+
+
+
+
+
+
+  </script>
+        
+ 
 
 </body>
 
