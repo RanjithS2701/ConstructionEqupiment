@@ -42,8 +42,8 @@ public class EditProduct extends HttpServlet {
 		// TODO Auto-generated method stub
 		int product_id = Integer.parseInt(request.getParameter("product_id"));
 		String pname = request.getParameter("pname");
-        String quantity = request.getParameter("quantity");
-        String priceperhr = request.getParameter("priceperhr");          
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        int priceperhr = Integer.parseInt(request.getParameter("priceperhr"));          
         
         Product product = new Product();
         product.setPname(pname);

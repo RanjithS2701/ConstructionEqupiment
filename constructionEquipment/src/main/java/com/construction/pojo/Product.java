@@ -5,8 +5,8 @@ import java.io.InputStream;
 public class Product {
 	private int product_id;
 	private String pname;
-	private String quantity;
-	private String priceperhr;
+	private int quantity;
+	private int priceperhr;
 	private InputStream pimage;
 	
 	
@@ -15,7 +15,7 @@ public class Product {
 	}
     
 	
-	public Product(String pname, String quantity, String priceperhr, InputStream pimage) {
+	public Product(String pname, int quantity, int priceperhr, InputStream pimage) {
 		super();
 		this.pname = pname;
 		this.quantity = quantity;
@@ -24,7 +24,7 @@ public class Product {
 	}
 
 
-	public Product(int product_id, String pname, String quantity, String priceperhr) {
+	public Product(int product_id, String pname, int quantity, int priceperhr) {
 		super();
 		this.product_id = product_id;
 		this.pname = pname;
@@ -32,7 +32,7 @@ public class Product {
 		this.priceperhr = priceperhr;
 	}
 
-	public Product(String pname, String quantity, String priceperhr) {
+	public Product(String pname, int quantity, int priceperhr) {
 		super();
 		this.pname = pname;
 		this.quantity = quantity;
@@ -55,19 +55,19 @@ public class Product {
 		this.pname = pname;
 	}
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	public String getPriceperhr() {
+	public int getPriceperhr() {
 		return priceperhr;
 	}
 
-	public void setPriceperhr(String priceperhr) {
+	public void setPriceperhr(int priceperhr) {
 		this.priceperhr = priceperhr;
 	}
 

@@ -23,8 +23,8 @@ Connection con;
             String query =  "insert into product (pname,quantity,priceperhr,pimage) values(?,?,?,?)";
             pst = con.prepareStatement(query);
             pst.setString(1, product.getPname());
-            pst.setString(2, product.getQuantity());
-            pst.setString(3, product.getPriceperhr());
+            pst.setInt(2, product.getQuantity());
+            pst.setInt(3, product.getPriceperhr());
             pst.setBlob(4, product.getPimage());
             pst.executeUpdate();
             test= true;
@@ -48,8 +48,8 @@ Connection con;
             while(rs.next()){
                 int product_id = rs.getInt("Product_id");
                 String pname = rs.getString("pname");
-                String quantity = rs.getString("quantity");
-                String priceperhr = rs.getString("priceperhr");
+                int quantity = rs.getInt("quantity");
+                int priceperhr = rs.getInt("priceperhr");
                  
                 
                 Product row = new Product(product_id,pname,quantity,priceperhr);
@@ -70,8 +70,8 @@ Connection con;
             String query = "update product set pname=?, quantity=?, priceperhr=?  where product_id=?";
             PreparedStatement pt = this.con.prepareStatement(query);
             pt.setString(1, product.getPname());
-            pt.setString(2, product.getQuantity());
-            pt.setString(3, product.getPriceperhr());
+            pt.setInt(2, product.getQuantity());
+            pt.setInt(3, product.getPriceperhr());
             pt.setInt(4, product.getProduct_id());
             
             pt.executeUpdate();
@@ -97,8 +97,8 @@ Connection con;
             while(rs.next()){
                 int product_id1 = rs.getInt("product_id");
                 String pname = rs.getString("pname");
-                String quantity = rs.getString("quantity");
-                String priceperhr = rs.getString("priceperhr");
+                int quantity = rs.getInt("quantity");
+                int priceperhr = rs.getInt("priceperhr");
                
                 pro = new Product(product_id1,pname,quantity,priceperhr);
             }

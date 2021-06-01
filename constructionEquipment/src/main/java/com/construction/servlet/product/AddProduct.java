@@ -46,8 +46,8 @@ public class AddProduct extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		  String pname = request.getParameter("pname");
-          String quantity = request.getParameter("quantity");
-          String priceperhr = request.getParameter("priceperhr");
+          int quantity = Integer.parseInt(request.getParameter("quantity"));
+          int priceperhr = Integer.parseInt(request.getParameter("priceperhr"));
           Part part = request.getPart("pimage");
           InputStream inputStream = part.getInputStream();
                     

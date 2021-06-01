@@ -52,7 +52,7 @@
 
     <nav id="main">
         <div class="logo" style="width: 100%; margin-left:auto; margin-right: auto;">
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MARSS</span>
+            <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()">&#9776; MARSS</span>
              <span style="padding-left: 60%;">
         <a  style="color: #fff;" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> Change Password</a>
       </span>
