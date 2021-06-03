@@ -32,10 +32,13 @@
 
 <%
 	int productId =Integer.parseInt((String)request.getParameter("product_id"));
+	int u_id =Integer.parseInt(request.getParameter("u_id"));
+	
 	inventDataAccess pdao = new inventDataAccess(connection.getConnection());
 	Product pro = pdao.getSingleProduct(productId);
 	
-	
+	UserDataAccess udao = new UserDataAccess(connection.getConnection());
+	User Duser = udao.getSingleUser(u_id);
 
 %>
 
@@ -47,7 +50,8 @@
     <nav id="main">
         <div class="logo" style="width: 100%; margin-left:auto; margin-right: auto;">
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MARSS</span>
-             <span style="padding-left: 60%;">
+             <span style="padding-left: 75%;">
+             <a style="color: #fff;" href="welcome.jsp">HOME</a>
             
     </nav>
 
@@ -62,52 +66,69 @@
         <h5 class="modal-title" id="staticBackdropLabel">Rent Me</h5>
       
       </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" href="" class="btn-close" data-bs-dismiss="welcome.jsp" aria-label="Close"></button>
       </div>
+      
       <div class="modal-body bodybg">
-        <form action="/"  method="post"> 
-          <input type="hidden" name="action" value="changePassword">
+      
+        <form action="AddtoCartServlet" method="get"> 
+      	<div class="form">  
           <div class="form-group ">
             <div >
-                  <img id="productImage" src="GetImage?product_id=<%=pro.getProduct_id() %>" >
+                  <img id="productImage" src="GetImage?product_id=<%=pro.getProduct_id() %>">
             </div>
           </div><br>
-          <div class="form">
             <div class="form-group ">
-              <div id="productName">Product Name :<%=pro.getPname() %>
-			  </div>
+              <input id="user_id" type="hidden" name ="user_id" value="<%=Duser.getU_id() %>"readonly> 
             </div><br>
-          <div class="form-group ">
-            <div id="<%=pro.getPriceperhr() %>">
-            </div>
-          </div><br>
-
+            <div class="form-group ">
+            <label for="">Product ID : </label>
+              <input id="pro_id" type="text" name ="pro_id" value="<%=pro.getProduct_id() %>"readonly>
+            </div><br>
+            <div class="form-group ">
+            <label for="">Product Name : </label>
+              <input id="productName" type="text" name ="productName" value="<%=pro.getPname() %>" readonly>
+            </div><br>
+			<div class="form-group">
+              <label for="">Price/hour : </label>
+              <input type="text" name="pPrice" id="pPrice" value="<%=pro.getPriceperhr() %>" readonly> 
+            </div><br>
             <div class="form-group">
-              <label for="">Quantity: </label>
+              <label for="">Quantity :&nbsp;&nbsp;&nbsp;</label>
               <input type="text" name="quantity" id="quantity"> 
             </div><br>
             <div class="form-group">
-              <label for="">Time: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+              <label for="">Time : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
               <input type="text" name="time" id="time">
             </div><br>
  			
 
            <input type="button" onclick="priceCalc()" value="Calculate">
-          
+           
           </div>
 			
           <div class="modal-footer">
-
-           <input type="submit" value="Rent">
+	       <input type="submit" id="button" value="Add To Cart">
           </div>
+          <div id="result" name="result"></div>
         </form>
-        <div id="result"></div>
+        
       </div>
       
     </div>
   </div>
   
 <script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+
 var quant;
 var times;
 var prodAmount;
@@ -115,15 +136,12 @@ var prodAmount;
    
 function priceCalc() {
 	var quant = document.getElementById("quantity").value ;
-	alert(quant);
 
 	var times = document.getElementById("time").value ;
-	alert(times);
 	
-	var prodAmount = document.getElementById("time").value ;
-	alert(prodAmount);
+	var prodAmount = document.getElementById("pPrice").value ;
 	
-	document.getElementById("result").innerHTML = quant * times * prodAmount ;
+	document.getElementById("result").innerHTML = "Total Amount : " + quant * times * prodAmount ;
 
 }
 </script>

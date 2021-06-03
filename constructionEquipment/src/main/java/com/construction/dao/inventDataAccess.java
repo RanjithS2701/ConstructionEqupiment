@@ -2,8 +2,11 @@ package com.construction.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.construction.pojo.Cart;
 import com.construction.pojo.Product;
 
 public class inventDataAccess {
@@ -108,6 +111,14 @@ Connection con;
         return pro;
     }
     
+    public static int getProductSellingPrice(int productPrice, int quantity, int time) {
+		int price = Integer.parseInt(String.valueOf(productPrice));
+		int quant = Integer.parseInt(String.valueOf(quantity));
+		int hour = Integer.parseInt(String.valueOf(time));
+		int finalcost = price * quant * hour;
+
+		return finalcost;
+	}
     
 
 }

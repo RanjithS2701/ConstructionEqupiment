@@ -12,8 +12,11 @@ public class User {
 	private String phoneno;
 	private String email;
 	private String password;
-	private String password1;
-	
+
+	public User(int u_id) {
+		super();
+		this.u_id = u_id;
+	}
 	
 	public User(int u_id, String fname, String lname, String uname, String dob, String gender, String phoneno,
 			String email,  String password) {

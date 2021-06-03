@@ -30,7 +30,7 @@
         <a href="#">PROFILE</a>
         <a href="#">#####</a>
         <a href="#">#####</a>
-        <a href="index.jsp">LOGOUT</a>
+        <a href="Admin.jsp">LOGOUT</a>
     </div>
 
     <nav id="main">
