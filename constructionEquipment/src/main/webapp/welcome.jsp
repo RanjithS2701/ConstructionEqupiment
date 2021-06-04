@@ -74,7 +74,7 @@ ResultSet rs = null;
 		<a href="#"><%=udetail.getFname()%> <%=udetail.getLname()%></a> <a
 			href="EditProfile.jsp?uname=<%=usr.getUname()%>">Edit Profile</a> <a
 			href="#">Help</a> <a href="login.jsp">Logout</a>
-		<div class="message"
+		<div id="divId" class="message"
 			style="color: pink; text-align: center; font-weight: bold; text-decoration: underline;">${Message}</div>
 		<br>
 	</div>
@@ -144,6 +144,8 @@ ResultSet rs = null;
 	</section>
 
 	<!---------------------- cards ---------------------------->
+	        <div id="divID" style="color: #FF0000; text-align: center;">${errorMessage1}</div><br>
+	
 	<div class="gallery">
 		<%
 		inventDataAccess pdao;
@@ -290,7 +292,7 @@ ResultSet rs = null;
 
 							<div class="modal-footer">
 
-								<input type="submit" value="Rent">
+								<input  type="submit" value="Rent">
 							</div>
 						</form>
 						<div id="result"></div>
@@ -317,7 +319,11 @@ ResultSet rs = null;
           <div class="modal-body">
            
             <div class="modal-body">
-            
+           <%--  <%
+            int productId = Integer.parseInt((String)request.getParameter("product_id"));
+            inventDataAccess prodao = new inventDataAccess(connection.getConnection());
+            Product pro = prodao.getSingleProduct(productId);
+            %>  --%>
               <table class="table tb-warning table-striped ">
             <thead>  
           <tr>
@@ -340,19 +346,21 @@ ResultSet rs = null;
             <td><%= cart.getQuantity() %></td>
             <td><%= cart.getTotal_cost() %></td>
             <td><a href="DeleteCart?cart_id=<%=cart.getCart_id()%>">Remove</a></td>
+            
           </tr>
           <%} %>
         </tbody>
       </table>
+      <div class="modal-footer ">
+                <button <%-- href="OrderPage.jsp?product_id=<%=pro.getProduct_id()%>&u_id=<%=Cuser.getU_id()%>" --%> type="button" class="btn-dark">RENT NOW</button>
+        </div>
       </div>
           </div>
         </div>
 
         
 
-		<div class="modal-footer ">
-                <button type="button" class="btn-dark">RENT NOW</button>
-        </div>
+		
       </div>
     </div>
     
@@ -377,6 +385,15 @@ ResultSet rs = null;
 			function Value(cart_list) {
 				$("#cart_list").val(cart_list);
 			}
+		</script>
+		<script >
+		setTimeout(function(){
+			  $("#divID").remove();
+			}, 3000);
+		setTimeout(function(){
+			  $("#divId").remove();
+			}, 3000);
+		
 		</script>
 </body>
 

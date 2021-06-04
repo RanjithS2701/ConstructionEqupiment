@@ -58,67 +58,86 @@
 <!-- Popup -->
 
 <!-- Modal -->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header header">
-        <div >
-         
-        <h5 class="modal-title" id="staticBackdropLabel">Rent Me</h5>
-      
-      </div>
-        <button type="button" href="" class="btn-close" data-bs-dismiss="welcome.jsp" aria-label="Close"></button>
-      </div>
-      
-      <div class="modal-body bodybg">
-      
-        <form action="AddtoCartServlet" method="get"> 
-      	<div class="form">  
-          <div class="form-group ">
-            <div >
-                  <img id="productImage" src="GetImage?product_id=<%=pro.getProduct_id() %>">
-            </div>
-          </div><br>
-            <div class="form-group ">
-              <input id="user_id" type="hidden" name ="user_id" value="<%=Duser.getU_id() %>"readonly> 
-            </div><br>
-            <div class="form-group ">
-            <label for="">Product ID : </label>
-              <input id="pro_id" type="text" name ="pro_id" value="<%=pro.getProduct_id() %>"readonly>
-            </div><br>
-            <div class="form-group ">
-            <label for="">Product Name : </label>
-              <input id="productName" type="text" name ="productName" value="<%=pro.getPname() %>" readonly>
-            </div><br>
-			<div class="form-group">
-              <label for="">Price/hour : </label>
-              <input type="text" name="pPrice" id="pPrice" value="<%=pro.getPriceperhr() %>" readonly> 
-            </div><br>
-            <div class="form-group">
-              <label for="">Quantity :&nbsp;&nbsp;&nbsp;</label>
-              <input type="text" name="quantity" id="quantity"> 
-            </div><br>
-            <div class="form-group">
-              <label for="">Time : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-              <input type="text" name="time" id="time">
-            </div><br>
- 			
+  <div style="margin: 5% auto; width: 75%; height: 200px;">
+    <form action="AddtoCartServlet" method="get">
+        <div style="float: left;  height: 400px;">
+            <img id="productImage" src="GetImage?product_id=<%=pro.getProduct_id() %>" style="width: 250px; height: 250px; margin-top: 110px; ">
+        </div>
 
-           <input type="button" onclick="priceCalc()" value="Calculate">
-           
-          </div>
-			
-          <div class="modal-footer">
-	       <input type="submit" id="button" value="Add To Cart">
-          </div>
-          <div id="result" name="result"></div>
-        </form>
-        
-      </div>
-      
-    </div>
-  </div>
-  
-<script>
+        <div class="form-group ">
+               <input id="user_id" type="hidden" name ="user_id" value="<%=Duser.getU_id() %>"readonly> 
+
+            <div class="row g-3">
+                <div class="col-md-2">
+                </div>
+                
+                <div class="col-md-4">
+                    <label for="quantity">Quantity :</label>
+                    <input type="text" name="quantity" id="quantity">
+                </div>
+                <div class="col-md-4">
+                    <label for="time">Time : </label><br>
+                    <input type="text" name="time" id="time">
+                </div>
+            </div>
+        </div><br><br>
+        <div class="form-group ">
+            <div class="row g-3">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
+                    <label for="pro_id">Product ID : </label><br>
+                    <input id="pro_id" type="text" name="pro_id" value="<%=pro.getProduct_id() %>" readonly>
+
+                </div>
+                <div class="col-md-4">
+                    <label for="productName">Product Name :</label><br>
+                    <input id="productName" type="text" name="productName" value="<%=pro.getPname() %>"
+                        readonly>
+                </div>
+            </div>
+        </div><br><br>
+        <div class="form-group ">
+            <div class="row g-3">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
+                    <label for="pPrice">Price/hour : </label><br>
+                    <input type="text" name="pPrice" id="pPrice" value="<%=pro.getPriceperhr() %>" readonly>
+                </div>
+                <div class="col-md-4">
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button" onclick="priceCalc()" value="Calculate" class="btn btn-primary"
+                        style="background-color: tomato;">
+                </div>
+            </div>
+        </div><br><br>
+        <div class="form-group ">
+            <div class="row g-3">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-6" style="text-align: left;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="result">Total Amount Is : <span id="result"></span> </label>
+                </div>
+            </div>
+        </div><br><br>
+        <div class="form-group ">
+            <div class="row g-3">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" value="Add To Cart" class="btn btn-danger third" style="width: 100%;">
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <input type="" value="Rent Now" class="btn btn-danger third" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script >
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
@@ -141,7 +160,7 @@ function priceCalc() {
 	
 	var prodAmount = document.getElementById("pPrice").value ;
 	
-	document.getElementById("result").innerHTML = "Total Amount : " + quant * times * prodAmount ;
+	document.getElementById("result").innerHTML =  quant * times * prodAmount ;
 
 }
 </script>

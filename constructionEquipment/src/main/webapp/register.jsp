@@ -1,3 +1,4 @@
+<%@ page import="com.construction.servlet.Register" %>
 <!DOCTYPE html>
 <html>
 <head>

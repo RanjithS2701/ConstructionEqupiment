@@ -301,3 +301,12 @@ button {
 .tabsize{
        padding-right:20%;
      }
+.third {
+      border-color: tomato;
+      color: #fff;
+      box-shadow: 0 0 35px 35px tomato inset, 0 0 0 0 tomato;
+      transition: all 150ms ease-in-out; 
+    }
+    .third:hover {
+        box-shadow: 0 0 8px 0 tomato inset, 0 0 8px 4px tomato;
+      }     
