@@ -69,7 +69,7 @@
               <div class="card_title title-white">
                 <section class="color-1">
                   <nav class="cl-effect-20">
-                    <a href="#"><span data-hover="ORDER MANAGEMENT">ORDER MANAGEMENT</span></a></nav></section>
+                    <a href="OrderManagement.jsp"><span data-hover="ORDER MANAGEMENT">ORDER MANAGEMENT</span></a></nav></section>
               </div>
             </div>
             
