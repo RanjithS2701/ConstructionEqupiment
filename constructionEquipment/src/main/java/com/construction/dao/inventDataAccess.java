@@ -2,6 +2,7 @@ package com.construction.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,6 +117,23 @@ Connection con;
 		int finalcost = price * quant * hour;
 
 		return finalcost;
+	}
+
+	public void updateQuantityAfterOrder(int productId, int Quantity) {
+		String query="update product set quantity=? where product_id=?";
+    	try
+    	{
+    	    PreparedStatement stmt= con.prepareStatement(query);
+    	    stmt.setInt(1, Quantity);
+    	    stmt.setInt(2, productId);
+    	    stmt.executeUpdate();
+    	}
+    	
+    	catch(SQLException e)
+    	{
+    		System.out.println(e);
+    	}
+		
 	}
     
 

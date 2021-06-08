@@ -100,13 +100,13 @@ Connection con;
 			}
 			return cartlist;
 		}
-	 public boolean deleteCartById(int cart_id){
+	 public boolean deleteCartById(int u_id){
 		 boolean status=false;
 	        try{
 	            
-	           String query= "delete from cart where cart_id=?";
+	           String query= "delete from cart where user_id=?";
 	           PreparedStatement pt = this.con.prepareStatement(query);
-	           pt.setInt(1, cart_id);
+	           pt.setInt(1, u_id);
 	           pt.executeUpdate();
 	           status=true;
 	            
@@ -115,4 +115,28 @@ Connection con;
 	        }
 	        return status;
 	    }
+	 public Cart getcartbyUser_Id(int user_id) {
+		 Cart cart = null;
+		 PreparedStatement pst;
+		 try {
+			 pst = con.prepareStatement("select * from cart where user_id=?");
+			 pst.setInt(1, user_id);
+			 ResultSet rs = pst.executeQuery();
+			 while (rs.next()) {
+				 int cart_id = rs.getInt("cart_id");
+					int u_id = rs.getInt("user_id");
+					int pro_id = rs.getInt("pro_id");
+					String p_name = rs.getString("p_name");
+					int price = rs.getInt("price");
+					int quantity = rs.getInt("quantity");
+					int time = rs.getInt("time");
+					int total_cost = rs.getInt("total_cost");
+					
+			        cart = new Cart(cart_id, u_id,pro_id,p_name,price,quantity,time,total_cost);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return cart;
+		}
 }

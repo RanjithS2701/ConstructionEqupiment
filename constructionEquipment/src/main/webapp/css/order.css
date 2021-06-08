@@ -1,0 +1,153 @@
+body{
+    margin: 0 0 0 0;
+    color: whitesmoke;
+    background-image: radial-gradient(circle, #ff6347, #c6503c, #8f3d30, #5b2c24, #2b1a17);
+}
+.table-row:nth-child(even)  {
+    background-color: #1768ac;
+    
+} 
+.table-row:nth-child(odd)  {
+   color: black;
+    
+} 
+
+
+.container {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+
+h2 {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+
+  
+}
+
+.responsive-table{
+    padding: 0 0 0 0;
+    margin: 0px 10px 0 10px;
+    padding-top: 20px;
+}
+    
+    li {
+        border-radius: 3px;
+        padding: 25px 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+
+    .table-header {
+        background-color: #0c2022;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        position: fixed;
+        
+        margin-top: 0px;
+        
+        
+    }
+    .fav{
+        color: lawngreen;
+        
+    }
+    .fav1{
+        color: rgb(243, 43, 43);
+    }
+    .accept{
+        background-color: #1768ac;
+        padding-right: 5px;
+        
+    }
+    .decline {
+        
+        background-color: rgb(216, 16, 16);
+    }
+     
+    .table-row {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .col-1 {
+        flex-basis: 10%;
+        text-align: center;
+        font-weight: 800;
+    }
+
+    .col-2 {
+        flex-basis: 40%;
+        text-align: center;
+        font-weight: 800;
+    }
+
+    .col-3 {
+        flex-basis: 25%;
+        text-align: center;
+        
+    }
+
+    .col-4 {
+        flex-basis: 25%;
+        text-align: center;
+        margin-right: -20px;
+    }
+    .col-7{
+        font-weight: bolder;
+        text-align: center;
+        padding-right: 106px;
+        
+    }
+    .col-8{
+        font-weight: bolder;
+        text-align: center;
+        padding-right: 102.5px;
+        
+    }
+    .itext{
+        margin-bottom: 0px;
+        margin-top: -19px;
+    }
+ 
+
+
+    .table-row{
+        height: 18.40px;
+    }
+
+    @media all and (max-width: 767px) {
+        .table-header {
+            display: none;
+        }
+
+
+        li {
+            display: block;
+        }
+
+        .col {
+
+            flex-basis: 100%;
+           
+
+        }
+
+        .col {
+            display: flex;
+            padding: 10px 0;
+
+            /* &:before {
+                color: #6C7A89;
+                padding-right: 10px;
+                content: attr(data-label);
+                flex-basis: 50%;
+                text-align: right;
+            } */
+        }
+    }

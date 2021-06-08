@@ -5,9 +5,11 @@
 <%@page import="com.construction.dao.connection"%>
 <%@page import="com.construction.pojo.User"%>
 <%@page import="com.construction.pojo.Cart"%>
+<%@page import="com.construction.pojo.Order"%>
 <%@page import="com.construction.dao.inventDataAccess"%>
 <%@page import="com.construction.dao.UserDataAccess"%>
 <%@page import="com.construction.dao.CartDAO"%>
+<%@page import="com.construction.dao.OrderDAO"%>
 <%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html>
@@ -63,7 +65,10 @@ User Cuser = userdao.getSingleUser(user_Id);
 CartDAO cartdao = new CartDAO(connection.getConnection());
 List<Cart> Lcart = cartdao.getcartbyId(user_Id);
 
-ResultSet rs = null;
+
+OrderDAO orderdao = new OrderDAO(connection.getConnection());
+List<Order> uorder = orderdao.getorderbyId(user_Id);
+
 %>
 
 <body>
@@ -87,7 +92,9 @@ ResultSet rs = null;
 				style="padding-left: 55%"></span><%-- <span> <a
 				style="color: white;"  data-bs-toggle="modal" onclick="Value('${cart_list}')"
 				data-bs-target="#OrderModel" >Cart</a></span> --%>
-				<span><a style="color: white;" href="#" onclick="Value('${cart_list}')"data-bs-toggle="modal" data-bs-target="#OrderModal"><i  class="fab fa-opencart fa-2x"></a></i></span>			<span><a style="color: #fff; padding-left: 2%" href="#"
+				<span><a style="color: white;" href="#" onclick="Value('${order_list}')"data-bs-toggle="modal" data-bs-target="#OrderPopup">My Orders</a></span>
+				<span><a style="color: white;" href="#" onclick="Value('${cart_list}')"data-bs-toggle="modal" data-bs-target="#OrderModal"><i  class="fab fa-opencart fa-2x"></a></i></span>		
+					<span><a style="color: #fff; padding-left: 2%" href="#"
 				data-bs-toggle="modal" data-bs-target="#exampleModal"> Change
 					Password</a></span> <span style="color: #fff; padding-left: 2%;">Hello,
 				<%=udetail.getFname()%> <%=udetail.getLname()%></span>
@@ -319,11 +326,7 @@ ResultSet rs = null;
           <div class="modal-body">
            
             <div class="modal-body">
-           <%--  <%
-            int productId = Integer.parseInt((String)request.getParameter("product_id"));
-            inventDataAccess prodao = new inventDataAccess(connection.getConnection());
-            Product pro = prodao.getSingleProduct(productId);
-            %>  --%>
+            
               <table class="table tb-warning table-striped ">
             <thead>  
           <tr>
@@ -331,6 +334,7 @@ ResultSet rs = null;
             <th>Product ID</th>
             <th>Product Name</th>
             <th>Quantity</th>
+            <th>Time</th>
             <th>Price</th>
             <th>Action</th>
           </tr>
@@ -344,6 +348,7 @@ ResultSet rs = null;
             <td><%= cart.getPro_id() %></td>
             <td><%= cart.getP_name() %></td>
             <td><%= cart.getQuantity() %></td>
+            <td><%= cart.time %></td>
             <td><%= cart.getTotal_cost() %></td>
             <td><a href="DeleteCart?cart_id=<%=cart.getCart_id()%>">Remove</a></td>
             
@@ -351,15 +356,21 @@ ResultSet rs = null;
           <%} %>
         </tbody>
       </table>
-      <div class="modal-footer ">
-                <button <%-- href="OrderPage.jsp?product_id=<%=pro.getProduct_id()%>&u_id=<%=Cuser.getU_id()%>" --%> type="button" class="btn-dark">RENT NOW</button>
+       <div class="modal-footer ">
+                <a href="OrderServlet?U_id=<%= Cuser.getU_id()%>" type="submit" class="btn-dark">RENT NOW</a>
+                
+        </div>
+         <%--  <form action="OrderServlet" method="get">
+          <input type="hidden" name="action" value="order">
+          <input type="hidden" name="U_id" value="<%=Cuser.getU_id()%>">
+          <input type="hidden" name="p_id" value="<%=cart.getPro_id() %>">
+          <input type="submit"  class="btn custom-bg text-light ml-5" value="Order">
+      </form> --%>
         </div>
       </div>
+                
           </div>
         </div>
-
-        
-
 		
       </div>
     </div>
@@ -367,6 +378,76 @@ ResultSet rs = null;
   </div>
   
   <!--Cart popup end -->
+  
+  	<!-- myOrder popup -->
+  
+
+  <div class="modal fade tabsize" id="OrderPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width: 800px;">
+        <div class="modal-header header" >
+          <h5 class="modal-title" id="exampleModalLabel"> Order</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body">
+           
+            <div class="modal-body">
+            
+              <table class="table tb-warning table-striped ">
+            <thead>  
+          <tr>
+          	<th>Product ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Time</th>
+            <th>Price</th>
+            <th>Order Date</th>
+            <th>Delivery</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+        
+        <tbody>
+        <%for(Order order: uorder)
+			{
+			%>
+          <tr>
+          <td><%= order.getP_id() %></td>
+            <td><%= order.getPro_name() %></td>
+            <td><%= order.getQuant() %></td>
+            <td><%= order.getTime() %>
+            <td><%= order.getTotalprice() %></td>
+            <td><%= order.getOrderDate() %></td>
+            <td><%= order.getDelivery() %></td>
+            <td><%= order.getStatus() %></td>
+            
+          </tr>
+          <%} %>
+        </tbody>
+      </table>
+<%--        <div class="modal-footer ">
+                <a href="OrderServlet?U_id=<%= Cuser.getU_id()%>" type="submit" class="btn-dark">RENT NOW</a>
+                
+        </div>
+ --%>         <%--  <form action="OrderServlet" method="get">
+          <input type="hidden" name="action" value="order">
+          <input type="hidden" name="U_id" value="<%=Cuser.getU_id()%>">
+          <input type="hidden" name="p_id" value="<%=cart.getPro_id() %>">
+          <input type="submit"  class="btn custom-bg text-light ml-5" value="Order">
+      </form> --%>
+        </div>
+      </div>
+                
+          </div>
+        </div>
+		
+      </div>
+    </div>
+    
+  </div>
+  
+  <!--Order popup end -->
 
 		<script>
 			function openNav() {
@@ -386,6 +467,12 @@ ResultSet rs = null;
 				$("#cart_list").val(cart_list);
 			}
 		</script>
+		<script>
+		$("#OrderPopup").modal("hide");
+		function Value(order_list) {
+			$("#order_list").val(order_list);
+		}
+		</script>
 		<script >
 		setTimeout(function(){
 			  $("#divID").remove();
@@ -395,6 +482,7 @@ ResultSet rs = null;
 			}, 3000);
 		
 		</script>
+		
 </body>
 
 </html>

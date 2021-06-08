@@ -2,8 +2,11 @@
 <%@page import="com.construction.pojo.Product"%>
 <%@page import="com.construction.dao.connection"%>
 <%@page import="com.construction.pojo.User"%>
+<%@page import="com.construction.pojo.Cart"%>
 <%@page import="com.construction.dao.inventDataAccess"%>
 <%@page import="com.construction.dao.UserDataAccess"%>
+<%@page import="com.construction.dao.CartDAO"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -32,14 +35,19 @@
 
 <%
 	int productId =Integer.parseInt((String)request.getParameter("product_id"));
-	int u_id =Integer.parseInt(request.getParameter("u_id"));
+	int u_id =Integer.parseInt((String)request.getParameter("u_id"));
 	
 	inventDataAccess pdao = new inventDataAccess(connection.getConnection());
 	Product pro = pdao.getSingleProduct(productId);
 	
 	UserDataAccess udao = new UserDataAccess(connection.getConnection());
 	User Duser = udao.getSingleUser(u_id);
-
+    
+	int U_id = Duser.getU_id();
+	User Ouser = udao.getSingleUser(u_id);
+	
+	CartDAO cartdao = new CartDAO(connection.getConnection());
+	List<Cart> cart = cartdao.getcartbyId(u_id);
 %>
 
 <body>
@@ -127,13 +135,16 @@
             <div class="row g-3">
                 <div class="col-md-2">
                 </div>
-                <div class="col-md-4">
+                <div  class="col-md-4">
                     <input type="submit" value="Add To Cart" class="btn btn-danger third" style="width: 100%;">
                 </div>
-                <div class="col-md-4" style="text-align: center;">
-                    <input type="" value="Rent Now" class="btn btn-danger third" style="width: 100%;">
+                <%-- <div class="col-md-4" style="text-align: center;">
+
+                    <a href="OrderServlet?product_id=<%=pro.getProduct_id() %>&u_id=<%=Duser.getU_id() %>" value="Rent Now" class="btn btn-danger third" style="width: 100%;">Rent
+                    </a>
+                    
                 </div>
-            </div>
+ --%>            </div>
         </div>
     </form>
 </div>
