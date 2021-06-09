@@ -19,34 +19,47 @@
 OrderDAO orderdao = new OrderDAO(connection.getConnection());
 List<Order> aorder = orderdao.getAllOrders();
 %>
-<div class="container">
-       
+  <div class="container">
+        
         <ul class="responsive-table" >
           <li class="table-header" >
             <div class="col col-7">Order Id</div>
+            <div class="col col-7">Order Date</div>
+            <div class="col col-7">User ID</div>
             <div class="col col-7">Product Name</div>
             <div class="col col-7">Quantity</div>
             <div class="col col-7">Total Price</div>
             <div class="col col-7">Time</div>
             <div class="col col-7">ETA</div>
             <div class="col col-7">Status</div>
+            <div class="col col-7">Action</div>
           </li>
           <%
-          for(Order order : aorder ){
+          for(Order order: aorder){
           %>
-          <li class="table-row" style="margin-top: 90px; ">
-            <div class="col col-1"><%= order.getOrder_id() %></div>
-            <div class="col col-2"><%= order.getPro_name() %></div>
-            <div class="col col-3"><%= order.getQuant() %></div>
-            <div class="col col-4"><%= order.getTotalprice() %></div>
-            <div class="col col-4">&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp <%= order.getTime() %></div>
-            <div class="col col-4"><input style="width:120px ;" type="date"></div>
-            <div class=" col col-8" style="padding-right: 8px; padding-left: 30px;">
-               <p class="itext">Accept</p>
-                <a href="" onclick=""><i class="fav fas fa-check-circle fa-2x"></i></a> </div>
-            <div class=" col col-8" style="padding-right: 50px;"><p class="itext">Decline</p><a href="" onclick=""><i class="far fav1 fa-times-circle fa-2x"></i></a> </div>
-            <%} %>
+          <form action="UpdateOrderServlet" method="get">
+          <li class="table-row" >
+            <div class="col col-1"><input style="width: 10px; border: none; border-color: transparent;" name="order_id" value="<%= order.getOrder_id() %>"></div>
+            <div class="col col-2"><%= order.getOrderDate() %></div>
+            <div class="col col-3"><%= order.getU_id() %></div>
+            <div class="col col-10"><%= order.getPro_name() %></div>
+            <div class="col col-4"><%= order.getQuant() %></div>
+            <div class="col col-5"><%= order.getTotalprice() %></div>
+            <div class="col col-6"><%= order.getTime() %></div>
+            <div class="col col-9"><input style="width:120px ;" type="date" name="delivery"></div>
+            <div class=" col col-8" >
+                <select name="status" id="">
+                <option>PENDING</option>
+                <option value="">ACCEPTED</option>
+                <option value="">REJECTED</option>
+            </select>
+        </div>
+        <div class="col col-11"><button type="submit">UPDATE</button></div>
+   <%} %>
           </li>
+          </form>
           
+        </ul>
+      </div>
 </body>
 </html>

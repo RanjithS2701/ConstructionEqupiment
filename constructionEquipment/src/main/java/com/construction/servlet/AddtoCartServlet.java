@@ -32,51 +32,7 @@ public class AddtoCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-       inventDataAccess didao = new inventDataAccess(connection.getConnection());
-		
-		//HttpSession session = request.getSession();
-		
-		int u_id = Integer.parseInt(request.getParameter("user_id"));
-		int p_id = Integer.parseInt(request.getParameter("pro_id"));
-		String pname = request.getParameter("productName");
-		int price = Integer.parseInt(request.getParameter("pPrice"));
-		int quant = Integer.parseInt(request.getParameter("quantity"));
-		int timeinhr = Integer.parseInt(request.getParameter("time"));
-		int totalcost = inventDataAccess.getProductSellingPrice(price,quant,timeinhr);
-		//int totalcost = Integer.parseInt(request.getParameter("totalamount"));
-		
-		Product product = didao.getSingleProduct(p_id);
-		int actualQuantity = product.getQuantity();
-		/* Cart tcart = new Cart(u_id,p_id); */
-		
-		if(quant>actualQuantity) {
-			
-			/*
-			 * request.setAttribute("user_id", u_id);
-			 * request.setAttribute("product_id",p_id);
-			 */
-			 
-			request.setAttribute("errorMessage1", "Only "+actualQuantity+" items are available now");
-			request.getRequestDispatcher("welcome.jsp").forward(request, response);
-		}
-		else {
-		Cart crt = new Cart (u_id, p_id, pname, price, quant, timeinhr, totalcost);
-		
-		CartDAO cdao = new CartDAO(connection.getConnection());
-		
-		if(cdao.saveToCart(crt))
-		{
-			
-			request.setAttribute("errorMessage1", "Added item to the cart Successfully !");
-			request.getRequestDispatcher("welcome.jsp").forward(request, response);
-		}
-		else
-		{
-			request.setAttribute("errorMessage1", "Item Already in cart !");
-			request.getRequestDispatcher("welcome.jsp").forward(request, response);
-			
-		}
-		}
+     
 	}
 
 	
@@ -88,7 +44,51 @@ public class AddtoCartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		  inventDataAccess didao = new inventDataAccess(connection.getConnection());
+			
+			//HttpSession session = request.getSession();
+			
+			int u_id = Integer.parseInt(request.getParameter("user_id"));
+			int p_id = Integer.parseInt(request.getParameter("pro_id"));
+			String pname = request.getParameter("productName");
+			int price = Integer.parseInt(request.getParameter("pPrice"));
+			int quant = Integer.parseInt(request.getParameter("quantity"));
+			int timeinhr = Integer.parseInt(request.getParameter("time"));
+			int totalcost = inventDataAccess.getProductSellingPrice(price,quant,timeinhr);
+			//int totalcost = Integer.parseInt(request.getParameter("totalamount"));
+			
+			Product product = didao.getSingleProduct(p_id);
+			int actualQuantity = product.getQuantity();
+			/* Cart tcart = new Cart(u_id,p_id); */
+			
+			if(quant>actualQuantity) {
+				
+				/*
+				 * request.setAttribute("user_id", u_id);
+				 * request.setAttribute("product_id",p_id);
+				 */
+				 
+				request.setAttribute("errorMessage1", "Only "+actualQuantity+" items are available now");
+				request.getRequestDispatcher("welcome.jsp").forward(request, response);
+			}
+			else {
+			Cart crt = new Cart (u_id, p_id, pname, price, quant, timeinhr, totalcost);
+			
+			CartDAO cdao = new CartDAO(connection.getConnection());
+			
+			if(cdao.saveToCart(crt))
+			{
+				
+				request.setAttribute("errorMessage1", "Added item to the cart Successfully !");
+				request.getRequestDispatcher("welcome.jsp").forward(request, response);
+			}
+			else
+			{
+				request.setAttribute("errorMessage1", "Item Already in cart !");
+				request.getRequestDispatcher("welcome.jsp").forward(request, response);
+				
+			}
+			}
 	}
 
 }

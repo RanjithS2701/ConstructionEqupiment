@@ -36,6 +36,7 @@ public class Order {
 	}
     
 	
+	
 	public Order(int u_id, int p_id, String pro_name, int quant, int time, int totalprice,String orderDate, String delivery,
 			String status) {
 		super();
@@ -53,7 +54,7 @@ public class Order {
     
 	public Order(int u_id, int p_id, String pro_name, int quant, int time, int totalprice) {
 		super();
-		U_id = u_id;
+		this.U_id = u_id;
 		this.p_id = p_id;
 		this.pro_name = pro_name;
 		this.quant = quant;
@@ -72,7 +73,8 @@ public class Order {
 		this.delivery = delivery;
 		this.status = status;
 	}
-
+    
+	
 
 	public int getOrder_id() {
 		return order_id;

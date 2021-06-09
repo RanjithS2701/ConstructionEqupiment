@@ -67,7 +67,7 @@
 
 <!-- Modal -->
   <div style="margin: 5% auto; width: 75%; height: 200px;">
-    <form action="AddtoCartServlet" method="get">
+    <form method="post">
         <div style="float: left;  height: 400px;">
             <img id="productImage" src="GetImage?product_id=<%=pro.getProduct_id() %>" style="width: 250px; height: 250px; margin-top: 110px; ">
         </div>
@@ -135,16 +135,13 @@
             <div class="row g-3">
                 <div class="col-md-2">
                 </div>
-                <div  class="col-md-4">
-                    <input type="submit" value="Add To Cart" class="btn btn-danger third" style="width: 100%;">
+                <div class="col-md-4">
+                    <input type="submit" value="Add To Cart" formaction="AddtoCartServlet" class="btn btn-danger third" style="width: 100%;">
                 </div>
-                <%-- <div class="col-md-4" style="text-align: center;">
-
-                    <a href="OrderServlet?product_id=<%=pro.getProduct_id() %>&u_id=<%=Duser.getU_id() %>" value="Rent Now" class="btn btn-danger third" style="width: 100%;">Rent
-                    </a>
-                    
-                </div>
- --%>            </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <input type="submit" value="Rent Now" formaction="DirectOrderServlet" class="btn btn-danger third" style="width: 100%;">
+             </div>
+             </div>
         </div>
     </form>
 </div>

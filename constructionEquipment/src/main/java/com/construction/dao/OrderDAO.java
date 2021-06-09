@@ -20,7 +20,7 @@ public class OrderDAO {
           PreparedStatement pt;	
           boolean status = false;
           try {
-        	  pt = con.prepareStatement("INSERT INTO `construction`.`order` (`U_id`, `p_id`, `pro_name`, `quant`, `time`, `totalprice`, `orderdate` , `delivery`, `status`) VALUES (?,?,?,?,?,?,?,?,?,?);");
+        	  pt = con.prepareStatement("INSERT INTO `construction`.`order` (`U_id`, `p_id`, `pro_name`, `quant`, `time`, `totalprice`, `orderdate` , `delivery`, `status`) VALUES (?,?,?,?,?,?,?,?,?);");
         	  pt.setInt(1, order.getU_id());
         	  pt.setInt(2, order.getP_id());
         	  pt.setString(3, order.getPro_name());
@@ -72,7 +72,7 @@ public class OrderDAO {
 		boolean status=false;
         try{
             
-           String query= "delete from order where order_id=?";
+           String query= "delete from construction.order where order_id=?";
            PreparedStatement pt = this.con.prepareStatement(query);
            pt.setInt(1, order_id);
            pt.executeUpdate();
@@ -95,14 +95,17 @@ public class OrderDAO {
             
             while(rs.next()){
                 int order_id = rs.getInt("order_id");
+                int u_id = rs.getInt("U_id");
+                int p_id = rs.getInt("p_id");
                 String pro_name = rs.getString("pro_name");
                 int quant = rs.getInt("quant");
-                int totalprice = rs.getInt("totalprice");
                 int time = rs.getInt("time");
+                int totalprice = rs.getInt("totalprice");
+                String orderdate = rs.getString("orderdate");
                 String delivery = rs.getString("delivery");
                 String status = rs.getString("status");
                 
-                Order row = new Order(order_id, pro_name, quant, totalprice,time, delivery, status);
+                Order row = new Order(order_id, u_id ,p_id, pro_name, quant, time,totalprice, orderdate, delivery, status);
                 order.add(row);
             }
             
@@ -111,5 +114,28 @@ public class OrderDAO {
         }
         return order;
     }
+	
+
+  public boolean updateOrder(Order order) {
+      boolean status = false;
+      try{
+          String query = "update construction.order set delivery=?, status=? where order_id=?";
+          PreparedStatement pt = this.con.prepareStatement(query);
+          pt.setString(1, order.getDelivery());
+          pt.setString(2, order.getStatus());
+          pt.setInt(3, order.getOrder_id());
+         
+          
+          pt.executeUpdate();
+          status = true;
+      }catch(Exception e){
+          e.printStackTrace();
+      }
+      
+     return status; 
+  }
+  
+    
+
 
 }

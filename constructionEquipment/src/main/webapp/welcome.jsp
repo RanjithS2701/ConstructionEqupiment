@@ -89,11 +89,11 @@ List<Order> uorder = orderdao.getorderbyId(user_Id);
 			style="width: 100%; margin-left: auto; margin-right: auto;">
 			<span style="color: #fff; font-size: 30px; cursor: pointer"
 				onclick="openNav()">&#9776; MARSS</span> <span
-				style="padding-left: 55%"></span><%-- <span> <a
+				style="padding-left: 45%;"></span><%-- <span> <a
 				style="color: white;"  data-bs-toggle="modal" onclick="Value('${cart_list}')"
 				data-bs-target="#OrderModel" >Cart</a></span> --%>
 				<span><a style="color: white;" href="#" onclick="Value('${order_list}')"data-bs-toggle="modal" data-bs-target="#OrderPopup">My Orders</a></span>
-				<span><a style="color: white;" href="#" onclick="Value('${cart_list}')"data-bs-toggle="modal" data-bs-target="#OrderModal"><i  class="fab fa-opencart fa-2x"></a></i></span>		
+				<span><a style="color: white; padding-left: 2%;" href="#" onclick="Value('${cart_list}')"data-bs-toggle="modal" data-bs-target="#OrderModal"><i  class="fab fa-opencart fa-2x"></a></i></span>		
 					<span><a style="color: #fff; padding-left: 2%" href="#"
 				data-bs-toggle="modal" data-bs-target="#exampleModal"> Change
 					Password</a></span> <span style="color: #fff; padding-left: 2%;">Hello,
@@ -384,7 +384,7 @@ List<Order> uorder = orderdao.getorderbyId(user_Id);
 
   <div class="modal fade tabsize" id="OrderPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content" style="width: 800px;">
+      <div class="modal-content" style="width: 900px;">
         <div class="modal-header header" >
           <h5 class="modal-title" id="exampleModalLabel"> Order</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -405,6 +405,7 @@ List<Order> uorder = orderdao.getorderbyId(user_Id);
             <th>Order Date</th>
             <th>Delivery</th>
             <th>Status</th>
+            <th>Action</th>
           </tr>
           </thead>
         
@@ -421,7 +422,7 @@ List<Order> uorder = orderdao.getorderbyId(user_Id);
             <td><%= order.getOrderDate() %></td>
             <td><%= order.getDelivery() %></td>
             <td><%= order.getStatus() %></td>
-            
+            <td><a href="DeleteOrder?order_id=<%= order.getOrder_id()%>">Cancel Order</a></td>
           </tr>
           <%} %>
         </tbody>

@@ -89,8 +89,9 @@ public class OrderServlet extends HttpServlet {
 		
 		 if(status==true) {
 			 cartdao.deleteCartById(u_id);
-			 response.sendRedirect("welcome.jsp");
-		 }
+			 session.setAttribute("cart", cart);
+			 response.sendRedirect("OrderSummary.jsp");	
+	   }
 		 else 
 		 {
 			 response.sendRedirect("AddToCart.jsp"); 
@@ -108,6 +109,7 @@ public class OrderServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response, int time, int totalBill)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
