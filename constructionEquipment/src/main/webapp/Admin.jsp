@@ -36,7 +36,7 @@
         <table >
             <tr>
                 <th> <label for="Aname">Admin Name<span style="color: red;">*</span></label><br>
-                    <input type="text" id="aname" name="aname" ><br>
+                    <input type="text" id="aname" name="aname" placeholder="Admin Name" ><br>
                 </th>
             </tr>
             <tr>

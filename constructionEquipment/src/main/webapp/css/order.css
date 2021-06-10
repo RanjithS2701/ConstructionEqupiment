@@ -11,7 +11,15 @@ body{
    color: black;
     
 } 
-
+.colb:nth-child(even){
+	border: none;
+	background-color: #1768ac;
+}
+.colb:nth-child(odd){
+	border: none;
+	background-color: white;
+	
+}
 
 .container {
     width: 100%;
@@ -36,10 +44,8 @@ h2 {
     
     li {
         border-radius: 3px;
-        padding: 25px 30px;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 25px;
     }
 
     .table-header {
@@ -78,17 +84,20 @@ h2 {
         
         font-weight: bolder;
         text-align: center;
-        padding-right: 75px;
+        /* padding-right: 75px; */
+        padding-right: 30px ; padding-left: 30px ;
         
     }
 
     .col-1 {
-      padding-right: 80px;
-    }
+           
+        font-weight: bolder;
+        text-align: center;
+}
 
     .col-2 {
         text-align: center;
-      padding-right: 60px;
+      padding-right: 30px;
     }
 
     .col-3 {
@@ -99,8 +108,8 @@ h2 {
 
     .col-4 {
         text-align: center;
-        padding-right: 130px;
-        padding-left: 30px;
+        padding-right: 10px;
+        padding-left: 10px;  
         
     }
     .col-5{
@@ -154,23 +163,62 @@ padding-left: 40px;
             display: block;
         }
 
-        .col {
+/*         .col {
 
             flex-basis: 100%;
            
 
         }
-
-        .col {
+ */
+         .col {
             display: flex;
             padding: 10px 0;
 
-            /* &:before {
+           /* &:before {
                 color: #6C7A89;
                 padding-right: 10px;
                 content: attr(data-label);
                 flex-basis: 50%;
                 text-align: right;
-            } */
+            }*/
         }
-    }
+    } 
+nav{
+    width: 97%;
+    height: 75px;
+    background-color: tomato;
+    line-height: 75px;
+    padding: 0px 20px;
+    position: sticky;
+    z-index: 1;
+   
+}
+
+nav .logo{
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+nav .logo p{
+    float: left;
+    color: #ffff;
+    text-transform: uppercase;
+    margin: 0 0;
+}
+nav ul{
+      float: right;
+      margin: 0 0;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    
+}
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 0px 30px;
+    
+}    

@@ -37,6 +37,14 @@ public class Order {
     
 	
 	
+	public Order(int order_id, String delivery, String status) {
+		super();
+		this.order_id = order_id;
+		this.delivery = delivery;
+		this.status = status;
+	}
+
+
 	public Order(int u_id, int p_id, String pro_name, int quant, int time, int totalprice,String orderDate, String delivery,
 			String status) {
 		super();

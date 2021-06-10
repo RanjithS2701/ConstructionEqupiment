@@ -56,8 +56,8 @@
           id="uname" name="uname" value="" placeholder="User Name" required><br>
         </td>
         <td><label for="password">Password<span
-            style="color: red;">*</span></label><br> <input type="password"
-          name="password" id="password" placeholder="" required> <br></td>
+            style="color: red;">*</span></label><br> <input  type="password"
+          name="password" id="password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" title="Must Contain a Uppercase,Lowercase,Number and 8 Charater and a special character"  required> <br></td>
       </tr>
       <tr>
         <td><label for="DOB">Date of Birth <br> <input type="date" id="DOB"
@@ -71,8 +71,8 @@
       </tr>
       <tr>
         <td><label for="Phone">Phone Number<span
-            style="color: red;">*</span></label><br> <input type="text"
-          id="number" name="phoneno" placeholder="Phone Number"required> <br>
+            style="color: red;">*</span></label><br> <input  type="text"
+          id="number" name="phoneno" placeholder="Phone Number" pattern="[6-9]{1}[0-9]{9}" title="Must Be Ten Number and Start With 6or7or8or9" required> <br>
         </td>
         <td><label for="email">Email<span style="color: red;">*</span></label><br>
           <input type="email" name="email" id="email" placeholder="Email" required>
@@ -90,7 +90,7 @@
 
     </table>
     <a href="login.jsp" style="text-decoration: underline;">Already have Account</a>
-    <br> <br> <input id="button" type="submit" value="Submit" onclick="window.location.href='adminhome.html'" disabled="true"/>
+    <br> <br> <input id="button" type="submit" value="Submit"  disabled="true"/>
 
   </form>
   

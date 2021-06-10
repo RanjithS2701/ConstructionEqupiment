@@ -42,8 +42,8 @@ public class UpdateOrderServlet extends HttpServlet {
         order.setOrder_id(order_id);
        
         OrderDAO orderdao = new OrderDAO(connection.getConnection());
-        boolean success = orderdao.updateOrder(order);
-        if(success) {
+        
+        if(orderdao.updateOrder(order)) {
         	response.sendRedirect("OrderManagement.jsp");
         }else {
         	System.out.println("error");
